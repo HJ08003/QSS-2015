@@ -29,7 +29,7 @@
 - Class: exact_question
   Output: 'Given that "n <- 10", how many times will the loop "for (i in 1:n)" iterate through?'
   CorrectAnswer: 10
-  AnswerTests: omnitest(correctVal=10)
+  AnswerTests: expr_identical_to('10')
   Hint: See 'Loop in R'
 
 # Question 4
