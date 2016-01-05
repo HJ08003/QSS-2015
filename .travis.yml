@@ -8,7 +8,9 @@ env:
  global:
    - CRAN: http://cran.rstudio.com
 
-script: Rscript Test.R; ls -l
+script: 
+   - Rscript Test.R
+   - ls -l
 
 notifications:
   email:
