@@ -1,0 +1,330 @@
+\section{Swirl Review Questions}
+  \subsection{Lesson 1}
+  \begin{enumerate}             
+    \item What is an example of an 'unsupervised learning' problem?
+    \begin{enumerate}
+      \item Finding topics in a set of newspaper articles
+      \item Discovering ideological differences among legislators
+      \item Identifying commonly used words in an author's corpus
+      \item All of these
+    \end{enumerate}
+    \if1\solutions
+    \noindent{\bf Solution:}
+    <<eval=FALSE>>=
+    All of these
+    @
+    \fi
+    \item How did unsupervised learning enable researchers to address the disputed authorship of the Federalist Papers?
+    \begin{enumerate}
+      \item Hamilton and Madison preferred to discuss different topics
+      \item Hamilton and Madison favored different words
+      \item Madison left coded messages in his prose
+      \item All of these
+    \end{enumerate}
+    \if1\solutions
+    \noindent{\bf Solution:}
+    <<eval=FALSE>>=
+    Hamilton and Madison favored different words
+    @
+    \fi
+    \item What kind of information does a document-term matrix like \rexpr{dtm} contain?
+    \begin{enumerate}
+      \item Term frequencies across a set of documents
+      \item The number of times a word is used in a document
+      \item The number of documents that contain a word at least once
+      \item All of these
+    \end{enumerate}
+    \if1\solutions
+    \noindent{\bf Solution:}
+    <<eval=FALSE>>=
+    All of these
+    @
+    \fi
+    \item Why does working with a document-term matrix require us to make the 'bag-of-words' assumption?
+    \begin{enumerate}
+      \item A document-term matrix says nothing about grammar or order of words
+      \item A document-term matrix contains a lot of words
+      \item A document-term matrix sorts similar words into bags
+      \item None of these
+    \end{enumerate}
+    \if1\solutions
+    \noindent{\bf Solution:}
+    <<eval=FALSE>>=
+    A document-term matrix says nothing about grammar or order of words
+    @
+    \fi
+    \item Chapter 5 also introduces several important \ R{} extensions, or packages. Use the \rexpr{\rfun{install.packages()}} function to install the \rexpr{wordcloud} package.
+    \if1\solutions
+    \newline\newline \noindent{\bf Solution:}
+    <<eval=FALSE>>=
+    install.packages("wordcloud")
+    @
+    \fi
+    \item Now call the \rexpr{\rfun{library()}} function to load the \rexpr{wordcloud} package.
+    \if1\solutions
+    \newline\newline \noindent{\bf Solution:}
+    <<eval=FALSE>>=
+    library(wordcloud)
+    @
+    \fi
+    \item Use the \rexpr{\rfun{inspect()}} function to visualize the first 5 rows and 8 columns of \rexpr{dtm}.
+    \if1\solutions
+    \newline\newline \noindent{\bf Solution:}
+    <<eval=FALSE>>=
+    inspect(dtm[1:5, 1:8])
+    @
+    \fi
+    \item Currently, \rexpr{dtm} belongs to a special \ R{} class called \rexpr{DocumentTermMatrix}. This object class is not easily manipulated in \R. Using the \rfun{as.matrix()} function, coerce \rexpr{dtm} to a matrix object in \ R{} called \rexpr{dtm.mat}.
+    \if1\solutions
+    \newline\newline \noindent{\bf Solution:}
+    <<eval=FALSE>>=
+    dtm.mat <- as.matrix(dtm)
+    @
+    \fi
+    \item Finally, use the \rfun{wordcloud()} function to visualize the information contained in the eighth document of \rexpr{dtm.mat} only.
+    \if1\solutions
+    \newline\newline \noindent{\bf Solution:}
+    <<eval=FALSE>>=
+    wordcloud(colnames(dtm.mat), dtm.mat[8, ])
+    @
+    \fi
+    \item Which of these do you think best describes the topic of the eighth Federalist Paper?
+    \begin{enumerate}
+      \item The costs and benefits of standing militia
+      \item Trade between the colonies
+      \item The universal rights of man
+      \item The abolition of slavery
+    \end{enumerate}
+    \if1\solutions
+    \noindent{\bf Solution:}
+    <<eval=FALSE>>=
+    The costs and benefits of standing militia
+    @
+    \fi
+  \end{enumerate}
+  \subsection{Lesson 2}
+  \begin{enumerate}
+    \item What are some examples of networks?
+    \begin{enumerate}
+      \item marriages between families
+      \item international trade flows
+      \item friendships on Facebook
+      \item all of these
+    \end{enumerate}
+    \if1\solutions
+    \noindent{\bf Solution:}
+    <<eval=FALSE>>=
+    all of these
+    @
+    \fi
+    \item A node represents \_\_\_\_\_\_\_\_\_\_
+    \begin{enumerate}
+      \item an individual unit
+      \item a group of units
+      \item all the units
+    \end{enumerate}
+    \if1\solutions
+    \noindent{\bf Solution:}
+    <<eval=FALSE>>=
+    an individual unit
+    @
+    \fi
+    \item An edge represents the \_\_\_\_\_\_\_\_\_\_
+    \begin{enumerate}
+      \item existence of a relationship between any pair of nodes
+      \item lack of a relationship between any pair of nodes
+      \item nodes that are the same
+    \end{enumerate}
+    \if1\solutions
+    \noindent{\bf Solution:}
+    <<eval=FALSE>>=
+    existence of a relationship between any pair of nodes
+    @
+    \fi
+    \item Verify that \rexpr{florence} is a square adjacency matrix using the \rfun{dim()} function.
+    \if1\solutions
+    \newline\newline \noindent{\bf Solution:}
+    <<eval=FALSE>>=
+    dim(florence)
+    @
+    \fi
+    \item Now, use indexing to have \ R{} output the adjacency (sub)matrix for the first 5 families only.
+    \if1\solutions
+    \newline\newline \noindent{\bf Solution:}
+    <<eval=FALSE>>=
+    florence[1:5, 1:5]
+    @
+    \fi
+    \item Is \rexpr{florence} an example of directed or undirected network data?
+    \begin{enumerate}
+      \item florence is undirected
+      \item florence is directed
+      \item we cannot tell yet
+    \end{enumerate}
+    \if1\solutions
+    \noindent{\bf Solution:}
+    <<eval=FALSE>>=
+    florence is undirected
+    @
+    \fi
+    \item There are two steps to plotting the network graph of \rexpr{florence}. First, use \rfun{graph.adjacency()} function to produce an \rexpr{igraph} object called \rexpr{florence.graph}. Be sure to specify that the adjancency matrix is undirected and that there are no marriages within families.
+    \if1\solutions
+    \newline\newline \noindent{\bf Solution:}
+    <<eval=FALSE>>=
+    florence.graph <- graph.adjacency(florence, mode = "undirected", diag = FALSE)
+    @
+    \fi
+    \item Now use the \rexpr{\rfun{plot()}} function to visualize the marriage network described by \rexpr{florence.graph}.
+    \if1\solutions
+    \newline\newline \noindent{\bf Solution:}
+    <<eval=FALSE>>=
+    plot(florence.graph)
+    @
+    \fi
+    \item We can quantify each family's place in the network using a measure of centrality. One common measure of centrality is known as 'betweenness'. Which of these statements best describes betweenness?
+    \begin{enumerate}
+      \item betweenness is the proportion of shortest paths between two other nodes that contain it
+      \item A node's betweenness is the number of nodes that are immediately connected to it
+      \item A node's betweenness is a measure of how close it is to other nodes
+      \item None of these
+    \end{enumerate}
+    \if1\solutions
+    \noindent{\bf Solution:}
+    <<eval=FALSE>>=
+    betweenness is the proportion of shortest paths between two other nodes that contain it
+    @
+    \fi
+    \item Compute the betweenness of each node in \rexpr{florence} and store the result as an object called \rexpr{between}.
+    \if1\solutions
+    \newline\newline \noindent{\bf Solution:}
+    <<eval=FALSE>>=
+    between <- betweenness(florence.graph)
+    @
+    \fi
+    \item Now, use the \rexpr{\rfun{sort()}} function to output a vector that starts with the family with highest betweenness and ends with the family with lowest betweenness.
+    \if1\solutions
+    \newline\newline \noindent{\bf Solution:}
+    <<eval=FALSE>>=
+    sort(between, decreasing = TRUE)
+    @
+    \fi
+    \item Verify this by using \rexpr{\rfun{order()}} and indexing to output the same vector from the previous question.
+    \if1\solutions
+    \newline\newline \noindent{\bf Solution:}
+    <<eval=FALSE>>=
+    between[order(between, decreasing = TRUE)]
+    @
+    \fi
+    \item Based on you find, which of the elite Florentine families was most central in the marriage network?
+    \begin{enumerate}
+      \item Medici
+      \item Ridolfi
+      \item Bischeri
+      \item Strozzi
+      \item Pucci
+    \end{enumerate}
+    \if1\solutions
+    \noindent{\bf Solution:}
+    <<eval=FALSE>>=
+    Medici
+    @
+    \fi
+  \end{enumerate}
+  \subsection{Lesson 3}
+  \begin{enumerate}
+    \item Maps can help us \_\_\_\_\_\_\_ spatial patterns.
+    \begin{enumerate}
+      \item visualize
+      \item disregard
+      \item invent
+    \end{enumerate}
+    \if1\solutions
+    \noindent{\bf Solution:}
+    <<eval=FALSE>>=
+    visualize
+    @
+    \fi
+    \item John Snow used \_\_\_\_\_\_\_\_\_ to identify the cause of the cause of the 1854 cholera epidemic.
+    \begin{enumerate}
+      \item a natural experiment
+      \item a randomized control trial
+      \item observational data
+    \end{enumerate}
+    \if1\solutions
+    \noindent{\bf Solution:}
+    <<eval=FALSE>>=
+    a natural experiment
+    @
+    \fi
+    \item The hexadecimal color code is a sequence of six characters beginning with a pound sign. Each set of two digits represents the colors \_\_\_\_\_\_\_, \_\_\_\_\_\_, and \_\_\_\_\_\_.
+    \begin{enumerate}
+      \item red, green and blue
+      \item red, yellow and blue
+      \item red, white and blue
+    \end{enumerate}
+    \if1\solutions
+    \noindent{\bf Solution:}
+    <<eval=FALSE>>=
+    red, green and blue
+    @
+    \fi
+    \item Look at the map of the United States 2008 presidential election results. Which feature did we use to help visualize the degree of support for Democrats and Republicans?
+    \begin{enumerate}
+      \item hue
+      \item shade
+      \item transparency
+    \end{enumerate}
+    \if1\solutions
+    \noindent{\bf Solution:}
+    <<eval=FALSE>>=
+    transparency
+    @
+    \fi
+    \item Using color, transparency and size helps us to visualize the Walmart expansion. Which of these best describes the location of Walmart Supercenters in the U.S.?
+    \begin{enumerate}
+      \item Supercenters equally distributed across the U.S.
+      \item Supercenters only on the coasts
+      \item Supercenters mainly in the Midwest and South
+    \end{enumerate}
+    \if1\solutions
+    \noindent{\bf Solution:}
+    <<eval=FALSE>>=
+    Supercenters mainly in the Midwest and South
+    @
+    \fi
+    \item Use the \rexpr{\rfun{map()}} function to draw a map of the United States.
+    \if1\solutions
+    \newline\newline \noindent{\bf Solution:}
+    <<eval=FALSE>>=
+    map(database = "usa")
+    @
+    \fi
+    \item Using the \rexpr{\rfun{subset()}} function, create an \rexpr{data.frame} object called \rexpr{lrgcities} which only contains cities with populations greater than 100,000. The variable for population in the \rexpr{us.cities} dataset is called \rexpr{pop}.
+    \if1\solutions
+    \newline\newline \noindent{\bf Solution:}
+    <<eval=FALSE>>=
+    lrgcities <- subset(us.cities, pop > 100000, )
+    @
+    \fi
+    \item Next, we want to save the USA database as a list and not a plot. Save it to an object called \rexpr{usa}.
+    \if1\solutions
+    \newline\newline \noindent{\bf Solution:}
+    <<eval=FALSE>>=
+    usa <- map(database = "usa", plot = FALSE)
+    @
+    \fi
+    \item Call the \rexpr{\rfun{map()}} function with the database set to \rexpr{state}, regions to \rexpr{New Jersey} and plot to \rexpr{FALSE}, and save the output to an object called \rexpr{nj}.
+    \if1\solutions
+    \newline\newline \noindent{\bf Solution:}
+    <<eval=FALSE>>=
+    nj <- map(database = "state", regions = "New Jersey", plot = FALSE)
+    @
+    \fi
+    \item Use the \rexpr{\rfun{rgb()}} function to assign the hexadecimal code for the color blue to the object \rexpr{blue}.
+    \if1\solutions
+    \newline\newline \noindent{\bf Solution:}
+    <<eval=FALSE>>=
+    blue <- rgb(red = 0, green = 0, blue = 1)
+    @
+    \fi
+  \end{enumerate}
