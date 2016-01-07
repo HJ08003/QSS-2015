@@ -10,7 +10,7 @@ env:
 
 script: 
    - Rscript Test.R
-   - ls -l
+   - bash swirl2rnw.bash
 
 notifications:
   email:
