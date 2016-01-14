@@ -1,0 +1,201 @@
+\section{Swirl Review Questions}
+  \subsection{Lesson 1}
+  \begin{enumerate}             
+    \item What are some reasons for non-response in surveys?
+    \begin{enumerate}
+      \item respondents refuse to answer
+      \item respondents don't know the answer
+      \item both of these
+    \end{enumerate}
+    \if1\solutions
+    \noindent{\bf Solution:}
+    <<eval=FALSE>>=
+    both of these
+    @
+    \fi
+    \item Listwise deletion will delete an entire observation if \_\_\_\_\_\_\_\_.
+    \begin{enumerate}
+      \item at least one of its variables has a missing value
+      \item if all of its variables are missing
+      \item if none of its variables are missing
+    \end{enumerate}
+    \if1\solutions
+    \noindent{\bf Solution:}
+    <<eval=FALSE>>=
+    at least one of its variables has a missing value
+    @
+    \fi
+    \item Histograms create \_\_\_\_\_\_\_\_\_\_ along the variable of interest.
+    \begin{enumerate}
+      \item intervals
+      \item bins
+      \item both are correct
+    \end{enumerate}
+    \if1\solutions
+    \noindent{\bf Solution:}
+    <<eval=FALSE>>=
+    both are correct
+    @
+    \fi
+    \item When printing and saving graphs use \_\_\_\_\_\_\_\_\_\_ to open a pdf device and \_\_\_\_\_\_\_\_\_\_ to close the device.
+    \begin{enumerate}
+      \item \rfun{pdf()} and \rfun{dev.off()}
+      \item \rfun{pdf.open()} and \rfun{dev.close()}
+      \item \rfun{pdf.on()} and \rfun{dev()}
+    \end{enumerate}
+    \if1\solutions
+    \noindent{\bf Solution:}
+    <<eval=FALSE>>=
+    pdf() and dev.off()
+    @
+    \fi
+    \item 'Without replacement' in a survey means each individual is interviewed \_\_\_\_\_\_\_\_\_\_.
+    \begin{enumerate}
+      \item once
+      \item many times
+      \item either of these
+    \end{enumerate}
+    \if1\solutions
+    \noindent{\bf Solution:}
+    <<eval=FALSE>>=
+    once
+    @
+    \fi
+    \item How do we summarize the Afghan data?
+    \if1\solutions
+    \newline\newline \noindent{\bf Solution:}
+    <<eval=FALSE>>=
+    summary(afghan)
+    @
+    \fi
+    \item Looking at the summary data, which of these variables has missing values?
+    \begin{enumerate}
+      \item \rexpr{violent.exp.ISAF}
+      \item \rexpr{employed}
+      \item \rexpr{age}
+    \end{enumerate}
+    \if1\solutions
+    \noindent{\bf Solution:}
+    <<eval=FALSE>>=
+    violent.exp.ISAF
+    @
+    \fi
+    \item Looking at the summary statistics, what is the mean number of years of education among the respondents?
+    \if1\solutions
+    \newline\newline \noindent{\bf Solution:}
+    <<eval=FALSE>>=
+    '4'
+    @
+    \fi
+    \item Make a table of proportions in each province by employment status.
+    \if1\solutions
+    \newline\newline \noindent{\bf Solution:}
+    <<eval=FALSE>>=
+    prop.table(table(afghan$province, afghan$employed))
+    @
+    \fi
+    \item How would you count the total number of missing elements of \rexpr{violent.exp.taliban}?
+    \if1\solutions
+    \newline\newline \noindent{\bf Solution:}
+    <<eval=FALSE>>=
+    sum(is.na(afghan$violent.exp.taliban))
+    @
+    \fi
+  \end{enumerate}
+  \subsection{Lesson 2}
+  \begin{enumerate}
+    \item In section 3.6, what kind of plot are we using to visualize ideological differences between Democrats and Republicans?
+    \begin{enumerate}
+      \item scatterplot
+      \item bar plot
+      \item histogram
+    \end{enumerate}
+    \if1\solutions
+    \noindent{\bf Solution:}
+    <<eval=FALSE>>=
+    scatterplot
+    @
+    \fi
+    \item True or False: Political polarization describes the phenomenon where the ideological centers of two political parties diverge over time.
+    \begin{enumerate}
+      \item True
+      \item False
+    \end{enumerate}
+    \if1\solutions
+    \noindent{\bf Solution:}
+    <<eval=FALSE>>=
+    'True'
+    @
+    \fi
+    \item What angle is the Lorenz curve if everyone earns exactly the same income?
+    \begin{enumerate}
+      \item 30 degrees
+      \item 45 degrees
+      \item 90 degrees
+    \end{enumerate}
+    \if1\solutions
+    \noindent{\bf Solution:}
+    <<eval=FALSE>>=
+    45 degrees
+    @
+    \fi
+    \item To estimate the correlation between two variables x and y, we need to know the mean of each as well as the \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_.
+    \begin{enumerate}
+      \item maximum
+      \item standard deviation
+      \item length
+    \end{enumerate}
+    \if1\solutions
+    \noindent{\bf Solution:}
+    <<eval=FALSE>>=
+    standard deviation
+    @
+    \fi
+    \item In the \rfun{kmeans()} function which option is used to define the number of clusters?
+    \begin{enumerate}
+      \item centers
+      \item groups
+      \item iterations
+    \end{enumerate}
+    \if1\solutions
+    \noindent{\bf Solution:}
+    <<eval=FALSE>>=
+    centers
+    @
+    \fi
+    \item Use \rexpr{\rfun{matrix()}} to create a matrix of 2 rows by 5 columns filled by row with the numbers 1 through 10. Assign this matrix to an object called \rexpr{x}.
+    \if1\solutions
+    \newline\newline \noindent{\bf Solution:}
+    <<eval=FALSE>>=
+    x <- matrix(1:10, nrow = 2, ncol = 5, byrow = TRUE)
+    @
+    \fi
+    \item Take the row means of this matrix
+    \if1\solutions
+    \newline\newline \noindent{\bf Solution:}
+    <<eval=FALSE>>=
+    rowMeans(x)
+    @
+    \fi
+    \item A list, \rexpr{z}, has been included in this lesson. Call the list object to see what it looks like.
+    \if1\solutions
+    \newline\newline \noindent{\bf Solution:}
+    <<eval=FALSE>>=
+    z
+    @
+    \fi
+    \item Call the first element of the list using brackets and the number 1.
+    \if1\solutions
+    \newline\newline \noindent{\bf Solution:}
+    <<eval=FALSE>>=
+    z[[1]]
+    @
+    \fi
+    \item Call the third element of the list using brackets and the name of the third element.
+    \if1\solutions
+    \newline\newline \noindent{\bf Solution:}
+    <<eval=FALSE>>=
+    z[["z3"]]
+    @
+    \fi
+  \end{enumerate}

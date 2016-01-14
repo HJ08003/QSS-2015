@@ -1,0 +1,201 @@
+\section{Swirl Review Questions}
+  \subsection{Lesson 1}
+  \begin{enumerate}             
+    \item Suppose a variable is binary, that is, it takes on values of either 0 or 1 (for example, female gender). Which of the following is the same as its sample mean?
+    \begin{enumerate}
+      \item the sample median
+      \item the sample rate of 1's
+      \item neither of these
+    \end{enumerate}
+    \if1\solutions
+    \noindent{\bf Solution:}
+    <<eval=FALSE>>=
+    the sample rate of 1's
+    @
+    \fi
+    \item What kind of value is \rexpr{FALSE}?
+    \begin{enumerate}
+      \item \rexpr{character}
+      \item \rexpr{logical}
+      \item \rexpr{binary}
+      \item \rexpr{numeric}
+    \end{enumerate}
+    \if1\solutions
+    \noindent{\bf Solution:}
+    <<eval=FALSE>>=
+    'logical'
+    @
+    \fi
+    \item Translate the following statement using \R's logical values (i.e., \rexpr{TRUE} and \rexpr{FALSE}) and operators (i.e., !, =, \&, and |): True or false is not false.
+    \if1\solutions
+    \newline\newline \noindent{\bf Solution:}
+    <<eval=FALSE>>=
+    (TRUE | FALSE) == !FALSE
+    @
+    \fi
+    \item In order to calculate the mean of a variable we have used the \rexpr{\rfun{length()}} function in the denominator. The \rexpr{\rfun{length()}} of a vector is equivalent to \_\_\_\_\_\_\_\_\_\_
+    \begin{enumerate}
+      \item the number of elements
+      \item the height
+      \item the maximum
+    \end{enumerate}
+    \if1\solutions
+    \noindent{\bf Solution:}
+    <<eval=FALSE>>=
+    the number of elements
+    @
+    \fi
+    \item How are factor variables different from categorical variables?
+    \begin{enumerate}
+      \item They are the same
+      \item Factor variables contain numeric values
+      \item Categorical variables tend to have more levels or categories
+    \end{enumerate}
+    \if1\solutions
+    \noindent{\bf Solution:}
+    <<eval=FALSE>>=
+    They are the same
+    @
+    \fi
+    \item Using the \rfun{read.csv()} function, we have pre-loaded the external data file \rexpr{resume.csv} as an object called \rexpr{resume}. Call the \rfun{head()} function to look at the first six rows of \rexpr{resume}.
+    \if1\solutions
+    \newline\newline \noindent{\bf Solution:}
+    <<eval=FALSE>>=
+    head(resume)
+    @
+    \fi
+    \item Find the dimensions of \rexpr{resume}.
+    \if1\solutions
+    \newline\newline \noindent{\bf Solution:}
+    <<eval=FALSE>>=
+    dim(resume)
+    @
+    \fi
+    \item This question has two parts. First, create a summary of \rexpr{resume} that contains, along with other information, the sample means of each variable in \rexpr{resume}.
+    \if1\solutions
+    \newline\newline \noindent{\bf Solution:}
+    <<eval=FALSE>>=
+    summary(resume)
+    @
+    \fi
+    \item Second, looking at the summary of \rexpr{resume}, what was the callback rate in the data? In other words, about what percent of the fictitious applicants received a call back?
+    \begin{enumerate}
+      \item 2\%
+      \item 16\%
+      \item 8\%
+      \item 9\%
+    \end{enumerate}
+    \if1\solutions
+    \noindent{\bf Solution:}
+    <<eval=FALSE>>=
+    8%
+    @
+    \fi
+    \item \rexpr{resume} contains two binary variables, \rexpr{sex} and \rexpr{call}. Create a table that compares the number of female applicants to the number of male applicants who did and did not receive a call back. Be sure to label the rows as 'sex' and the columns as 'call'.
+    \if1\solutions
+    \newline\newline \noindent{\bf Solution:}
+    <<eval=FALSE>>=
+    table(sex = resume$sex, call = resume$call)
+    @
+    \fi
+  \end{enumerate}
+  \subsection{Lesson 2}
+  \begin{enumerate}
+    \item Chapter 2 discusses several approaches to identifying causal relationships. Which of the following approaches is considered the 'gold standard' in many scientific disciplines?
+    \begin{enumerate}
+      \item Randomized controlled trials
+      \item Randomized experiments
+      \item Either of these
+    \end{enumerate}
+    \if1\solutions
+    \noindent{\bf Solution:}
+    <<eval=FALSE>>=
+    Either of these
+    @
+    \fi
+    \item With observational studies, it is often hard to establish that changes in one variable caused changes in another variable. In other words, observational studies have less \_\_\_\_\_\_\_\_\_\_ compared to RCTS.
+    \begin{enumerate}
+      \item Internal validity
+      \item External validity
+      \item Generalizability
+      \item All of these
+    \end{enumerate}
+    \if1\solutions
+    \noindent{\bf Solution:}
+    <<eval=FALSE>>=
+    Internal validity
+    @
+    \fi
+    \item What kinds of people does \rexpr{social\rexpr{\$}type} distinguish between?
+    \begin{enumerate}
+      \item seniors and non-seniors
+      \item voters and non-voters
+      \item non-senior voters and non-senior non-voters
+      \item all of these
+    \end{enumerate}
+    \if1\solutions
+    \noindent{\bf Solution:}
+    <<eval=FALSE>>=
+    all of these
+    @
+    \fi
+    \item The counterfactual is \_\_\_\_\_\_\_\_\_\_.
+    \begin{enumerate}
+      \item what actually happened
+      \item what would have happened if a key condition were different
+      \item what we want to happen
+    \end{enumerate}
+    \if1\solutions
+    \noindent{\bf Solution:}
+    <<eval=FALSE>>=
+    what would have happened if a key condition were different
+    @
+    \fi
+    \item When do we observe both potential outcomes, i.e., Y(1) and Y(0)?
+    \begin{enumerate}
+      \item Always
+      \item Never
+      \item Sometimes
+    \end{enumerate}
+    \if1\solutions
+    \noindent{\bf Solution:}
+    <<eval=FALSE>>=
+    Never
+    @
+    \fi
+    \item Use indexing to find the callback rate for fictitious female job applicants in \rexpr{resume}.
+    \if1\solutions
+    \newline\newline \noindent{\bf Solution:}
+    <<eval=FALSE>>=
+    mean(resume$call[resume$sex == "female"])
+    @
+    \fi
+    \item To find the result of Question 6 through a different method, use \rexpr{\rfun{subset()}} to create a new data frame object called \rexpr{resumeF} that only consists of female applicants.
+    \if1\solutions
+    \newline\newline \noindent{\bf Solution:}
+    <<eval=FALSE>>=
+    resumeF <- subset(resume, sex == "female")
+    @
+    \fi
+    \item Now calculate the callback rate in \rexpr{resumeF}.
+    \if1\solutions
+    \newline\newline \noindent{\bf Solution:}
+    <<eval=FALSE>>=
+    mean(resumeF$call)
+    @
+    \fi
+    \item Try using \rexpr{\rfun{tapply()}} to find the turnout rate in 2008 for each experimental group identified by the variable \rexpr{messages}.
+    \if1\solutions
+    \newline\newline \noindent{\bf Solution:}
+    <<eval=FALSE>>=
+    tapply(social$primary2008, social$messages, mean)
+    @
+    \fi
+    \item Use \rexpr{\rfun{ifelse()}} to create a new variable, \rexpr{social\rexpr{\$}female}, that equals 1 if the applicant is female and 0 otherwise.
+    \if1\solutions
+    \newline\newline \noindent{\bf Solution:}
+    <<eval=FALSE>>=
+    social$female <- ifelse(social$sex == "female", 1, 0)
+    @
+    \fi
+  \end{enumerate}
