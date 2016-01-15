@@ -8,7 +8,9 @@ env:
  global:
    - CRAN: http://cran.rstudio.com
 
-script: Rscript Test.R
+script: 
+   - Rscript Test.R
+   - bash swirl2rnw.bash
 
 notifications:
   email:
