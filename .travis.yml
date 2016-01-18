@@ -9,8 +9,8 @@ env:
    - CRAN: http://cran.rstudio.com
 
 script: 
-   - Rscript Test.R
-   - bash swirl2rnw.bash
+   - Rscript test.R
+   - bash swirl2rnw
 
 notifications:
   email:
